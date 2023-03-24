@@ -1,0 +1,18 @@
+<div class="posts">
+  {{#each posts}}
+  <article class="card">
+    <div>
+      <h1><a href="/post/{{id}}">{{title}}</a></h1>
+      {{!-- <div>
+        comment: {{}}
+      </div> --}}
+      <div>
+        posted by {{ user.username }} on {{ description }}
+      </div>
+      <div>
+        {{ body }}
+      </div>
+    </div>
+  </article>
+  {{/each}}
+</div>

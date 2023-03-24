@@ -3,7 +3,7 @@ const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 // homepage route
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
 

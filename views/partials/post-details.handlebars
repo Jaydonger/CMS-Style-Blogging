@@ -8,13 +8,15 @@
       <div>
         posted by {{ user.username }} on {{ format_date created_on }}
       </div>
-      <div class="card-body">
-        {{#each Comments as |comment|}}
-        {{ comment.description }}
-        {{/each}}
-      </div>
     </div>
   </article>
+      <div class="card-body">
+        <p>Comments:</p>
+        {{#each Comments as |comment|}}
+        <p>{{ comment.description }}</p>
+        <p>Posted by {{ comment.user.username }}</p>
+        {{/each}}
+      </div>
 </div>
 
 

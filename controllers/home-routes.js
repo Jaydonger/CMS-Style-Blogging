@@ -40,18 +40,24 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/post/:id', async (req, res) => {
   try {
     const postIDdata = await Post.findByPk(req.params.id, {
+
       include: [
-        User,
+        {
+          model: User,
+          attributes: {
+            exclude: ['password'],
+          }
+        },
         {
           model: Comment,
-          include: [
-            User
-          ],
-        },
-      ],
+          include: [User]
+        }
+      ]
     });
     const post = postIDdata.get({ plain: true });
     res.render('post', { post, loggedIn: req.session.loggedIn });
+    console.log(post);
+    // console.log(post[0].Comments[0]);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

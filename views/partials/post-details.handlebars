@@ -2,20 +2,18 @@
   <article class="card-header">
     <div>
       <h1><a href="/post/{{id}}">{{title}}</a></h1>
-      {{!-- <div>
-        comment: {{}}
-      </div> --}}
       <div>
         posted by {{ user.username }} on {{ format_date created_on }}
       </div>
     </div>
   </article>
       <div class="card-body">
-        <p>Comments:</p>
+        <ol>Comments:
         {{#each Comments as |comment|}}
-        <p>{{ comment.description }}</p>
-        <p>Posted by {{ comment.user.username }}</p>
+        <li>{{ comment.description }}</li>
+        <p class="tiny">Comment from {{ comment.user.username }} on {{ format_date comment.created_on}}</p>
         {{/each}}
+        </ol>
       </div>
 </div>
 

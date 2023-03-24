@@ -1,4 +1,4 @@
-<section class="container">
+{{!-- <section class="container">
   <h3 class="post-name">{{post.title}}</h3>
   <h4>created on: {{ format_date post.created_on }}</h4>
   <!-- If the user is logged in, render the gallery content -->
@@ -8,10 +8,31 @@
     {{> comment-details}}
     {{/each}}
   </section>
-</section>
-<!-- Otherwise, provide a link to login -->
+</section> --}}
+<div class="card">
+  <article class="card-header">
+    <div>
+      <h1><a href="/post/{{post.id}}">{{post.title}}</a></h1>
+      <div>
+        posted by {{ post.user.username }} on {{ format_date post.createdAt }}
+      </div>
+    </div>
+  </article>
+      <div class="card-body">
+        {{#if loggedIn}}
+        <ol>Comments:
+        {{#each post.Comments as |comment|}}
+          <li>
+            {{ comment.description }}
+            <p class="tiny">Comment from {{ comment.user.username }} on {{ format_date comment.created_on}}</p>
+          </li>
+        {{/each}}
+        </ol>
 {{else}}
 <a href="/login">You must login first to view this page</a>
 {{/if}}
+      </div>
+</div>
+<!-- Otherwise, provide a link to login -->
 
 
